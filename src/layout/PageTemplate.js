@@ -5,9 +5,7 @@ import "../style/reset.css";
 import "../style/base.css";
 import "../style/utility.css";
 import NavbarMain from "./NavbarMain";
-import Hero from "./Hero";
 import Footer from "./Footer";
-import { WhatsappIcon } from "../utility/init";
 import WhatsappBubble from "../component/WhatsappBubble";
 import styled from "styled-components";
 
@@ -15,7 +13,6 @@ export default function PageTemplate({ children }) {
   return (
     <div>
       <NavbarMain />
-      <a href=""></a>
       {children}
       <WhatsappBubble />
       <Footer />

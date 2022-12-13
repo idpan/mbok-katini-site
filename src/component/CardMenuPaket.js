@@ -1,7 +1,7 @@
-import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
+const dataInfo = require("../../data/dataInfo");
 const Wrapper = styled.div`
   width: 26.5rem;
   height: fit-content;
@@ -32,7 +32,6 @@ const Title = styled.h5`
     margin-bottom: 15px;
   }
 `;
-// margin-bottom: 10px;
 const CardBody = styled.div`
   padding: 20px 20px 25px;
   @media (min-width: 768px) {
@@ -55,7 +54,6 @@ const CardText = styled.div`
     font-size: 1.2rem;
   }
 `;
-//
 const Price = styled.p`
   color: var(--text-second-color);
   margin-top: 20px;
@@ -68,7 +66,6 @@ const Price = styled.p`
   }
 `;
 export default function CardMenuPaket(props) {
-  // margin-bottom: 30px;
   return (
     <Wrapper className={props.className}>
       <ImageWrapper>{props.image}</ImageWrapper>
@@ -76,9 +73,12 @@ export default function CardMenuPaket(props) {
         <Title className="card-title">{props.title} </Title>
         <CardText className="card-text">{props.bodyText}</CardText>
         <Price>Rp {props.price.toLocaleString("id-ID")}</Price>
-        <Link to="#">
+        <a
+          target="_blank"
+          href={dataInfo.whatsapp_link(`aku mau pesan ${props.menuName} dong`)}
+        >
           <Button>Pesan Sekarang</Button>
-        </Link>
+        </a>
       </CardBody>
     </Wrapper>
   );

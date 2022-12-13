@@ -4,6 +4,7 @@ import ShapeHeroBottom from "../component/ShapeHeroBottom";
 import imageHero from "../assets/images/hero_image.png";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import OptimizeImage from "../component/OptimizeImage";
 const Wrapper = styled.div`
 background:var(--text-second-color) ;
 padding-top:80px;

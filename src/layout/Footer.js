@@ -3,15 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import logoType from "../assets/images/mbok-katini-logotype.png";
 import IconWithText from "../component/IconWithText";
-import {
-  InstagramIcon,
-  TiktokIcon,
-  GrabfoodIcon,
-  GofoodIcon,
-  WhatsappIcon,
-  EmailIcon,
-  LocationIcon,
-} from "../utility/init";
+import { InstagramIcon, GofoodIcon, WhatsappIcon } from "../utility/init";
+const dataInfo = require("../../data/dataInfo");
 const Wrapper = styled.footer`
   position: relative;
   background: #151515;
@@ -58,12 +51,6 @@ const Wrapper = styled.footer`
     }
   }
 `;
-// width: 2px;
-// height: 100%;
-// align-items: center;
-// display: flex;
-// gap: 50px;
-// transform: rotate(90deg);
 const LogoFooter = styled.div`
   margin-bottom: 56px;
 
@@ -76,24 +63,6 @@ const LogoFooter = styled.div`
   }
 `;
 export default function Footer() {
-  // background-image: linear-gradient(to bottom, #151515, #303030);
-  const siteInfo = useStaticQuery(graphql`
-    query footerInfoQuery {
-      allSite {
-        edges {
-          node {
-            siteMetadata {
-              gofood_link
-              grabfood_link
-              instagram_link
-              location
-              noHp
-            }
-          }
-        }
-      }
-    }
-  `).allSite.edges[0].node.siteMetadata;
   return (
     <Wrapper className="bg-bg-primary my-container">
       <div className="footer-wrapper">
@@ -105,25 +74,18 @@ export default function Footer() {
             <a
               className="my-nav-link"
               target="_blank"
-              href={`https://api.whatsapp.com/send/?phone=${
-                "62" + siteInfo.noHp.substring(1)
-              }`}
+              href={dataInfo.whatsapp_link("halo aku mau tanya - tanya dong")}
             >
-              <IconWithText text={siteInfo.noHp}>
+              <IconWithText text={dataInfo.phoneNumber}>
                 <WhatsappIcon />
               </IconWithText>
             </a>
-            {/* <a className="my-nav-link" target="_blank" href="#">
-              <IconWithText text="email@email.com">
-                <EmailIcon />
-              </IconWithText>
-            </a> */}
             <a
               className="my-nav-link"
               target="_blank"
-              href="https://goo.gl/maps/c2dEdg88XBfC5igC8"
+              href={dataInfo.location_link}
             >
-              <p>{siteInfo.location}</p>
+              <p>{dataInfo.location}</p>
             </a>
           </div>
           <div className="divider"></div>
@@ -132,24 +94,18 @@ export default function Footer() {
               <a
                 className="my-nav-link"
                 target="_blank"
-                href={siteInfo.instagram_link}
+                href={dataInfo.instagram_link}
               >
                 <InstagramIcon />
               </a>
-              {/* <a className="my-nav-link" target="_blank" href="#">
-                <TiktokIcon />
-              </a> */}
             </div>
             <div className="partner ">
               <p className="">tersedia juga di</p>
               <div className="hstack justify-content-center gap-3">
-                {/* <a className="my-nav-link" target="_blank" href={siteInfo.grabfood_link}>
-                  <GrabfoodIcon />
-                </a> */}
                 <a
                   className="my-nav-link"
                   target="_blank"
-                  href={siteInfo.gofood_link}
+                  href={dataInfo.gofood_link}
                 >
                   <GofoodIcon />
                 </a>

@@ -2,9 +2,7 @@ import React from "react";
 import CardMenuPaket from "./CardMenuPaket";
 import Button from "./Button";
 import styled from "styled-components";
-import { graphql, useStaticQuery } from "gatsby";
-import { MenuWrapper } from "../layout/MenuComponents";
-import { GatsbyImage } from "gatsby-plugin-image";
+import OptimizeImage from "./OptimizeImage";
 const dataInfo = require("../../data/dataInfo");
 
 const Wrapper = styled.div`
@@ -79,42 +77,11 @@ const Wrapper = styled.div`
   }
 `;
 export default function TumpengCard() {
-  const thumbData = useStaticQuery(graphql`
-    query bentoImageQuery {
-      allFile(filter: { relativeDirectory: { eq: "thumb" } }) {
-        edges {
-          node {
-            childImageSharp {
-              fluid {
-                originalName
-              }
-              gatsbyImageData(
-                formats: WEBP
-                placeholder: DOMINANT_COLOR
-                layout: FULL_WIDTH
-              )
-            }
-          }
-        }
-      }
-    }
-  `).allFile.edges;
-  const thumbMenuTumpeng = thumbData.find(
-    (el) =>
-      el.node.childImageSharp.fluid.originalName == "tumpeng.jpg" ||
-      el.node.childImageSharp.fluid.originalName == "tumpeng.jpeg"
-  ).node.childImageSharp.gatsbyImageData;
-  const thumbMenuTumpengMini = thumbData.find(
-    (el) =>
-      el.node.childImageSharp.fluid.originalName == "tumpeng-mini.jpg" ||
-      el.node.childImageSharp.fluid.originalName == "tumpeng-mini.jpeg"
-  ).node.childImageSharp.gatsbyImageData;
-  // const thumbImage = thumbMenu?.node.childImageSharp.gatsbyImageData;
   return (
     <Wrapper>
       <div className="tumpeng-mobile-card">
         <CardMenuPaket
-          image={<GatsbyImage image={thumbMenuTumpeng} alt="tumpeng" />}
+          image={<OptimizeImage imageName="tumpeng"></OptimizeImage>}
           title={"Tumpeng"}
           bodyText={
             <ul>
@@ -127,12 +94,11 @@ export default function TumpengCard() {
             </ul>
           }
           price={250000}
+          menuName="tumpeng"
         />
         <CardMenuPaket
-          image={
-            <GatsbyImage image={thumbMenuTumpengMini} alt="tumpeng-mini" />
-          }
-          title={"Tumpeng Mini"}
+          image={<OptimizeImage imageName="tumpeng-mini"></OptimizeImage>}
+          title={"Tumpeng Mini Cone / Rose"}
           bodyText={
             <>
               <div>
@@ -162,16 +128,17 @@ export default function TumpengCard() {
             </>
           }
           price={25000}
+          menuName="tumpeng mini cone / rose"
         />
       </div>
       <div className="tumpeng-desktop-card">
         <div className="tumpeng-card">
           <div>
             <div className="image-wrapper">
-              <GatsbyImage image={thumbMenuTumpeng}></GatsbyImage>
+              <OptimizeImage imageName="tumpeng"></OptimizeImage>
             </div>
             <p className="price">Rp 250.000</p>
-            <a href={dataInfo.whatsapp_link}>
+            <a href={dataInfo.whatsapp_link("aku mau pesan tumpeng")}>
               <Button>Pesan Sekarang</Button>
             </a>
           </div>
@@ -190,10 +157,14 @@ export default function TumpengCard() {
         <div className="tumpeng-card">
           <div>
             <div className="image-wrapper ">
-              <GatsbyImage image={thumbMenuTumpengMini}></GatsbyImage>
+              <OptimizeImage imageName="tumpeng-mini"></OptimizeImage>
             </div>
             <p className="price">Rp 25.000</p>
-            <a href={dataInfo.whatsapp_link}>
+            <a
+              href={dataInfo.whatsapp_link(
+                "aku mau pesan tumpeng mini cone / rose"
+              )}
+            >
               <Button>Pesan Sekarang</Button>
             </a>
           </div>

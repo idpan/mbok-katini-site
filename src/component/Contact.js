@@ -1,16 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import IconWithText from "./IconWithText";
-import {
-  InstagramIcon,
-  TiktokIcon,
-  GrabfoodIcon,
-  GofoodIcon,
-  WhatsappIcon,
-  EmailIcon,
-  LocationIcon,
-} from "../utility/init";
-import { graphql, useStaticQuery } from "gatsby";
+import { InstagramIcon, GofoodIcon, WhatsappIcon } from "../utility/init";
+const dataInfo = require("../../data/dataInfo");
 const Wrapper = styled.div`
   font-size: 1.2rem;
   padding: 0 20px 0;
@@ -28,24 +20,6 @@ const Divider = styled.hr`
   height: 2px;
 `;
 export default function Contact({ className }) {
-  const contactData = useStaticQuery(graphql`
-    query contactQuery {
-      allSite {
-        edges {
-          node {
-            siteMetadata {
-              gofood_link
-              grabfood_link
-              instagram_link
-              location
-              noHp
-            }
-          }
-        }
-      }
-    }
-  `).allSite.edges[0].node.siteMetadata;
-  console.log(contactData);
   return (
     <Wrapper className={className + " " + "w-75 mx-auto  contact  text-center"}>
       <Divider className=" divide d-md-none " />
@@ -53,25 +27,18 @@ export default function Contact({ className }) {
         <a
           className="my-nav-link"
           target="_blank"
-          href={`https://api.whatsapp.com/send/?phone=${
-            "62" + contactData.noHp.substring(1)
-          }`}
+          href={dataInfo.whatsapp_link("halo mau tanya - tanya dong")}
         >
-          <IconWithText text={contactData.noHp}>
+          <IconWithText text={dataInfo.phoneNumber}>
             <WhatsappIcon />
           </IconWithText>
         </a>
-        {/* <a className="my-nav-link" to="#">
-          <IconWithText text="email@email.com">
-            <EmailIcon />
-          </IconWithText>
-        </a> */}
         <a
           className="my-nav-link"
           target="_blank"
-          href="https://goo.gl/maps/c2dEdg88XBfC5igC8"
+          href={dataInfo.location_link}
         >
-          <p>{contactData.location}</p>
+          <p>{dataInfo.location}</p>
         </a>
       </div>
       <Divider className=" divide " />
@@ -79,28 +46,14 @@ export default function Contact({ className }) {
         <a
           className="my-nav-link"
           target="_blank"
-          href={contactData.instagram_link}
+          href={dataInfo.instagram_link}
         >
           <InstagramIcon />
         </a>
-        {/* <a className="my-nav-link" terget="_blank" href="#">
-          <TiktokIcon />
-        </a> */}
       </div>
       <Label className=" label ">tersedia juga di :</Label>
       <div className="partner hstack justify-content-center gap-3">
-        {/* <a
-          className="my-nav-link"
-          target="_blank"
-          href={contactData.grabfood_link}
-        >
-          <GrabfoodIcon />
-        </a> */}
-        <a
-          className="my-nav-link"
-          target="_blank"
-          href={contactData.gofood_link}
-        >
+        <a className="my-nav-link" target="_blank" href={dataInfo.gofood_link}>
           <GofoodIcon />
         </a>
       </div>

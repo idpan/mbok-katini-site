@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
 import "../style/style.css";
 
 // import required modules
@@ -20,7 +19,17 @@ export default function CarouselCard({ children, breakpoints }) {
       }}
       modules={[Pagination]}
       className="mySwiper "
-      breakpoints={breakpoints}
+      breakpoints={{
+        0: {
+          slidesPerView: 1,
+        },
+        481: {
+          slidesPerView: 2,
+        },
+        1300: {
+          slidesPerView: 3,
+        },
+      }}
     >
       {Array.isArray(children)
         ? children.map((element) => {

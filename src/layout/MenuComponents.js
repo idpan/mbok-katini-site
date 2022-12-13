@@ -1,9 +1,5 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
-import CardMenuAlacart from "../component/CardMenuAlacart";
-import PageTemplate from "./PageTemplate";
-
 export const NavFilter = styled.div`
   width: 100%;
   max-width: 53rem;

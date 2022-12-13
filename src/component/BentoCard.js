@@ -1,10 +1,7 @@
 import React from "react";
-import CardMenuPaket from "../component/CardMenuPaket";
 import Button from "./Button";
 import styled from "styled-components";
-import { MenuWrapper } from "../layout/MenuComponents";
-import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import OptimizeImage from "./OptimizeImage";
 const dataInfo = require("../../data/dataInfo");
 const Wrapper = styled.div`
   margin: auto;
@@ -47,39 +44,13 @@ const Wrapper = styled.div`
   }
 `;
 export default function BentoCard(props) {
-  const thumbData = useStaticQuery(graphql`
-    query bentoImageQuery {
-      allFile(filter: { relativeDirectory: { eq: "thumb" } }) {
-        edges {
-          node {
-            childImageSharp {
-              fluid {
-                originalName
-              }
-              gatsbyImageData(
-                formats: WEBP
-                placeholder: DOMINANT_COLOR
-                layout: FULL_WIDTH
-              )
-            }
-          }
-        }
-      }
-    }
-  `).allFile.edges;
-  const thumbMenu = thumbData.find(
-    (el) =>
-      el.node.childImageSharp.fluid.originalName == "bento.jpg" ||
-      el.node.childImageSharp.fluid.originalName == "bento.jpeg"
-  );
-  const thumbImage = thumbMenu?.node.childImageSharp.gatsbyImageData;
   return (
     <>
       <Wrapper className={props.className}>
         <div className="bento-card">
           <div>
             <div className="image-wrapper">
-              <GatsbyImage image={thumbImage}></GatsbyImage>
+              <OptimizeImage imageName="bento"></OptimizeImage>
             </div>
           </div>
           <div>
