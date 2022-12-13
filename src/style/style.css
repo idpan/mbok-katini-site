@@ -1,0 +1,29 @@
+.swiper {
+  padding-bottom: 70px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.my-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-image: linear-gradient(to top, #cf820e, #f2ac43);
+}
+.swiper-pagination-bullet {
+  background-color: rgb(214, 214, 214);
+  opacity: 1;
+  width: 15px;
+  height: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .swiper {
+    padding-left: 150px !important;
+    padding-right: 150px !important;
+  }
+}

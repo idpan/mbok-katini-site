@@ -1,0 +1,22 @@
+/* base satyle */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Nunito:ital,wght@0,500;0,700;0,900;1,400&family=Poppins:wght@400;500;700&display=swap");
+:root {
+  --main-dark-bg: #121212;
+  --main-light-bg: #fffcf2;
+  --second-light-bg: #faf2d8;
+  --main-color: #d28407;
+  --text-light-color: #999999;
+  --text-dark-color: #616161;
+  --text-main-color: #cf820e;
+  --text-second-color: #e07722;
+  --btn-link-color: #cf820e;
+  --font-family-main: "Poppins", sans-serif;
+  --font-family-head: "Nunito", sans-serif;
+  font-size: 10px;
+}
+body {
+  background-color: var(--main-light-bg);
+  font-size: 1.6rem;
+  font-family: var(--font-family-main);
+  font-weight: 400;
+}

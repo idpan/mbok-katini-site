@@ -1,0 +1,49 @@
+.my-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media screen and (min-width: 768px) {
+  .my-container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+.my-wrapper {
+  margin: 0px 20px;
+}
+.my-nav-link {
+  text-decoration: none;
+  color: var(--text-light-color);
+}
+.my-nav-link:hover,
+.my-nav-link:hover * {
+  color: var(--text-main-color);
+  fill: var(--text-main-color);
+  cursor: pointer;
+}
+.my-nav-link:hover::after {
+  display: none;
+}
+.container-between > * {
+  display: inline-block;
+}
+
+.light-color {
+  color: var(--text-light-color);
+}
+.dark-color {
+  color: var(--text-dark-color);
+}
+.dark-bg {
+  background-color: var(--main-dark-bg);
+}
+.light-bg {
+  background-color: var(--main-light-bg);
+}
+.dark-bg-second {
+  background-color: rgb(35, 35, 35);
+}
+.light-shadow {
+  box-shadow: rgba(120, 120, 120, 0.15) 0px 15px 25px,
+    rgba(132, 132, 132, 0.05) 0px 5px 10px;
+}
