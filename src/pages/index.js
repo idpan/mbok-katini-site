@@ -34,7 +34,6 @@ const Wrapper = styled.div`
   }
   section {
     background: #faf2d8;
-    }
   }
 `;
 
